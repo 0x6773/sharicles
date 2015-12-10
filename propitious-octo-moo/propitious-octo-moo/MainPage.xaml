@@ -5,9 +5,97 @@
     xmlns:local="using:propitious_octo_moo"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="Assets/bkgrnd.png" Opacity="0.6"/>
+        </Grid.Background>
+        <SplitView x:Name="MySplitView" DisplayMode="CompactOverlay" IsPaneOpen="False" 
+               CompactPaneLength="50" OpenPaneLength="150">
+            <SplitView.Pane>
+                <StackPanel Background="Gray">
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Foreground="White"
+                        Width="50" Height="50" Background="#FF474747" Click="HamburgerButton_Click"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="MenuButton1" FontFamily="Segoe MDL2 Assets" Content="&#xE825;"
+                        Width="50" Height="50" Background="Transparent"/>
+                        <TextBlock Text="Home" FontSize="18" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <Grid HorizontalAlignment="Stretch" Background="Gray">
+                            <TextBlock Text="$haricles" HorizontalAlignment="Right" Margin="0" 
+                           FontSize="35" Foreground="White" Height="50"/>
+                        </Grid>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <ProgressRing x:Name="MapFindProgressBar" IsActive="True" HorizontalAlignment="Right" Margin="5,2"/>
+                            <TextBlock x:Name="MapFindTextBlock" Text="Finding your Location" Margin="5,2"/>
+                        </StackPanel>
 
+                        <!-- Don't share below key with anyone else -->
+                        <Maps:MapControl x:Name="MapControl1" Height="450" Margin="6"
+                                 ZoomInteractionMode="GestureAndControl" 
+                                 TiltInteractionMode="GestureAndControl" 
+                                 MapServiceToken="Fzefg6JLEvusAiELaimR~4sglr9j0rlLuWUPjD6rEog~ArX8XLpTFNLZAXbZyW-0cwcXFD1XPykDMySwAkIVZATc7Sh3Tu576mIHIr0l0-kq"/>
+
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <TextBlock Text="From" FontSize="20" HorizontalAlignment="Center"
+                                   Margin="10, 2" Foreground="Black"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="FromData" FontSize="20" Margin="5, 2" 
+                                   TextAlignment="Center" Foreground="AliceBlue"/>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <TextBlock Text="To" FontSize="20" HorizontalAlignment="Center"
+                                   Margin="10, 2" Foreground="Black"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox x:Name="ToData" FontSize="20" Margin="5, 2" 
+                                   TextAlignment="Center" Foreground="AliceBlue"/>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <Button x:Name="ShareRideButton" Content="Share Ride" 
+                                        HorizontalAlignment="Stretch" Margin="5"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Button x:Name="GetRideButton" Content="Get Ride" 
+                                        HorizontalAlignment="Stretch" Margin="5"/>
+                            </Grid>
+                        </Grid>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </SplitView.Content>
+        </SplitView>
     </Grid>
 </Page>
