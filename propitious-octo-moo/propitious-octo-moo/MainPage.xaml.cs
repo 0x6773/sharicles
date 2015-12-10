@@ -85,5 +85,29 @@ namespace propitious_octo_moo
             }
 
         }
+
+        private void FromData_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (FromData.Text == "From")
+                FromData.Text = "";
+        }
+
+        private void FromData_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (FromData.Text == "")
+                FromData.Text = "From";
+        }
+
+        private void ToData_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (ToData.Text == "To")
+                ToData.Text = "";
+        }
+
+        private void ToData_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (ToData.Text == "")
+                ToData.Text = "To";
+        }
     }
 }

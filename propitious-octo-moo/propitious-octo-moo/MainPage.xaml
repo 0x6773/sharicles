@@ -12,27 +12,52 @@
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" ImageSource="Assets/bkgrnd.png" Opacity="0.6"/>
         </Grid.Background>
-        <SplitView x:Name="MySplitView" DisplayMode="CompactOverlay" IsPaneOpen="False" 
-               CompactPaneLength="50" OpenPaneLength="150">
+        <SplitView x:Name="MySplitView" DisplayMode="Overlay" IsPaneOpen="False" 
+               CompactPaneLength="50" OpenPaneLength="210">
             <SplitView.Pane>
-                <StackPanel Background="Gray">
-                    <StackPanel Orientation="Horizontal">
-                        <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Foreground="White"
-                        Width="50" Height="50" Background="#FF474747" Click="HamburgerButton_Click"/>
+                <Grid Background="#FF474747" VerticalAlignment="Stretch">
+                    <StackPanel VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Foreground="White"
+                                    Width="50" Height="50" Click="HamburgerButton_Click"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Background="Wheat">
+                            <Button x:Name="MenuButton1" FontFamily="Segoe MDL2 Assets" Content="&#xE825;" 
+                                    Width="50" Height="50" Background="Transparent"/>
+                            <TextBlock Text="Home" FontSize="18" VerticalAlignment="Center" Margin="15,5"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="HistoryButton" FontFamily="Segoe MDL2 Assets" Content="&#xE840;" Foreground="White" 
+                                    Width="50" Height="50"/>
+                            <TextBlock Text="History" FontSize="18" VerticalAlignment="Center" Margin="15,5"/>
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Button x:Name="MenuButton1" FontFamily="Segoe MDL2 Assets" Content="&#xE825;"
-                        Width="50" Height="50" Background="Transparent"/>
-                        <TextBlock Text="Home" FontSize="18" VerticalAlignment="Center"/>
+                    <StackPanel VerticalAlignment="Bottom">
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="AboutButton" FontFamily="Segoe MDL2 Assets" Content="&#xE724;" Foreground="White" 
+                                        Width="50" Height="50"/>
+                            <TextBlock Text="About" FontSize="18" VerticalAlignment="Center" Margin="15,5"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="SettingsButton" FontFamily="Segoe MDL2 Assets" Content="&#xE713;" Foreground="White" 
+                                        Width="50" Height="50"/>
+                            <TextBlock Text="Settings" FontSize="18" VerticalAlignment="Center" Margin="15,5"/>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
+                </Grid>
             </SplitView.Pane>
             <SplitView.Content>
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
-                        <Grid HorizontalAlignment="Stretch" Background="Gray">
-                            <TextBlock Text="$haricles" HorizontalAlignment="Right" Margin="0" 
-                           FontSize="35" Foreground="White" Height="50"/>
+                        <Grid HorizontalAlignment="Stretch" Background="#FF474747">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="HamburgerButton2" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Foreground="White"
+                            Width="50" Height="50" Background="#FF474747" Click="HamburgerButton_Click"/>
+                            <TextBlock Text="$ha₹icles" HorizontalAlignment="Right" Margin="10,0" 
+                           FontSize="35" Foreground="White" Height="50" Grid.Column="1"/>
                         </Grid>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <ProgressRing x:Name="MapFindProgressBar" IsActive="True" HorizontalAlignment="Right" Margin="5,2"/>
@@ -45,39 +70,17 @@
                                  TiltInteractionMode="GestureAndControl" 
                                  MapServiceToken="Fzefg6JLEvusAiELaimR~4sglr9j0rlLuWUPjD6rEog~ArX8XLpTFNLZAXbZyW-0cwcXFD1XPykDMySwAkIVZATc7Sh3Tu576mIHIr0l0-kq"/>
 
-                        <Grid Margin="5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="3*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Grid Grid.Column="0">
-                                <TextBlock Text="From" FontSize="20" HorizontalAlignment="Center"
-                                   Margin="10, 2" Foreground="Black"/>
-                            </Grid>
-                            <Grid Grid.Column="1">
-                                <TextBox x:Name="FromData" FontSize="20" Margin="5, 2" 
-                                   TextAlignment="Center" Foreground="AliceBlue"/>
-                            </Grid>
+                        <Grid Margin="15,5">
+                            <TextBox x:Name="FromData" Text="From" FontSize="20" Margin="5, 2" 
+                                     TextAlignment="Center" Foreground="AliceBlue" GotFocus="FromData_GotFocus" LostFocus="FromData_LostFocus" />
                         </Grid>
 
-                        <Grid Margin="5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="3*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Grid Grid.Column="0">
-                                <TextBlock Text="To" FontSize="20" HorizontalAlignment="Center"
-                                   Margin="10, 2" Foreground="Black"/>
-                            </Grid>
-                            <Grid Grid.Column="1">
-                                <TextBox x:Name="ToData" FontSize="20" Margin="5, 2" 
-                                   TextAlignment="Center" Foreground="AliceBlue"/>
-                            </Grid>
+                        <Grid Margin="15,5">
+                            <TextBox x:Name="ToData" Text ="To" FontSize="20" Margin="5, 2" 
+                                     TextAlignment="Center" Foreground="AliceBlue" GotFocus="ToData_GotFocus" LostFocus="ToData_LostFocus"/>
                         </Grid>
 
-                        <Grid Margin="5">
+                        <Grid Margin="15,5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>

@@ -1,12 +1,17 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -61,7 +66,8 @@ namespace propitious_octo_moo
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated ||
+                    e.PreviousExecutionState == ApplicationExecutionState.ClosedByUser)
                 {
                     //TODO: Load state from previously suspended application
                 }
@@ -77,6 +83,8 @@ namespace propitious_octo_moo
                 // parameter
                 rootFrame.Navigate(typeof(MainPage), e.Arguments);
             }
+            // Start in Full Screen
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
             // Ensure the current window is active
             Window.Current.Activate();
         }
@@ -101,7 +109,7 @@ namespace propitious_octo_moo
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            //TODO: Save application state and stop any background activity
+            //TODO: Save application state and stop any background activitys
             deferral.Complete();
         }
     }
