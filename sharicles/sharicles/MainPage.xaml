@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d">
-
+    
     <Grid>
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" ImageSource="Assets/bkgrnd.png" Opacity="0.75"/>
@@ -61,7 +61,7 @@
                         </Grid>
 
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <StackPanel>
+                            <StackPanel x:Name="MainStackPanel">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                     <ProgressRing x:Name="MapFindProgressBar" IsActive="True" HorizontalAlignment="Right" Margin="5,2"/>
                                     <TextBlock x:Name="MapFindTextBlock" Text="Finding your Location" Margin="5,2"/>

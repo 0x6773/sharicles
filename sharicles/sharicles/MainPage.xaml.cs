@@ -23,11 +23,12 @@ using Windows.UI.Xaml.Navigation;
 
 namespace sharicles
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
+        /// <summary>
+        /// UIElement for "Find your Location" Above Map.
+        /// </summary>
+        public UIElement findLocation;
         public MainPage()
         {
             this.InitializeComponent();
@@ -41,10 +42,15 @@ namespace sharicles
 
         private async void SetMapPosition()
         {
+            findLocation = MainStackPanel.Children[0];
+            MainStackPanel.Children.RemoveAt(0);
+
             var accessStatus = await Geolocator.RequestAccessAsync();
             switch (accessStatus)
             {
                 case GeolocationAccessStatus.Allowed:
+                    // Show "Finding your Location"
+                    MainStackPanel.Children.Insert(0, findLocation);
                     //BasicGeoposition snPosition = new BasicGeoposition() { Latitude = 25.367, Longitude = 82.996 };
                     
                     // Get the current location.
@@ -66,6 +72,8 @@ namespace sharicles
 
                     MapFindProgressBar.IsActive = false;
                     MapFindTextBlock.Visibility = Visibility.Collapsed;
+
+                    MainStackPanel.Children.RemoveAt(0);
 
                     break;
 
