@@ -3,7 +3,7 @@
   <Identity Name="131f332a-237a-4cea-8c71-3013650c9b46" Publisher="CN=Govind Sahai" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="131f332a-237a-4cea-8c71-3013650c9b46" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>propitious-octo-moo</DisplayName>
+    <DisplayName>sharicles</DisplayName>
     <PublisherDisplayName>Govind Sahai</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
