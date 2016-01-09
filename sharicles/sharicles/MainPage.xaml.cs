@@ -19,18 +19,15 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace sharicles
 {
     public sealed partial class MainPage : Page
     {
-        /// <summary>
-        /// UIElement for "Find your Location" Above Map.
-        /// </summary>
-        public UIElement findLocation;
+        public User MainUser { get; set; }
         public MainPage()
         {
+            this.MainUser = new User();
+            MainUser.SetTempValues(); 
             this.InitializeComponent();
             SetMapPosition();
         }
@@ -42,7 +39,7 @@ namespace sharicles
 
         private async void SetMapPosition()
         {
-            findLocation = MainStackPanel.Children[0];
+            UIElement findLocation = MainStackPanel.Children[0];
             MainStackPanel.Children.RemoveAt(0);
 
             var accessStatus = await Geolocator.RequestAccessAsync();
@@ -51,8 +48,8 @@ namespace sharicles
                 case GeolocationAccessStatus.Allowed:
                     // Show "Finding your Location"
                     MainStackPanel.Children.Insert(0, findLocation);
-                    //BasicGeoposition snPosition = new BasicGeoposition() { Latitude = 25.367, Longitude = 82.996 };
-                    
+
+                    //BasicGeoposition snPosition = new BasicGeoposition() { Latitude = 25.367, Longitude = 82.996 };                    
                     // Get the current location.
                     Geolocator geolocator = new Geolocator();
                     Geoposition pos = await geolocator.GetGeopositionAsync();
@@ -69,10 +66,8 @@ namespace sharicles
                     mapIcon1.Title = "Your Location";
 
                     MapControl1.MapElements.Add(mapIcon1);
-
-                    MapFindProgressBar.IsActive = false;
-                    MapFindTextBlock.Visibility = Visibility.Collapsed;
-
+                    
+                    // Show "Finding your Location"
                     MainStackPanel.Children.RemoveAt(0);
 
                     break;
