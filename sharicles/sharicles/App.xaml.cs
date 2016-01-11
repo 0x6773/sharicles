@@ -84,7 +84,7 @@ namespace sharicles
                 rootFrame.Navigate(typeof(MainPage), e.Arguments);
             }
             // Start in Full Screen
-            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
+            // ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.FullScreen;
             // Ensure the current window is active
             Window.Current.Activate();
         }

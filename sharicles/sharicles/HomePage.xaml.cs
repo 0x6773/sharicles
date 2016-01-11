@@ -20,20 +20,35 @@ namespace sharicles
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class HomePage : Page
     {
-        public static MainPage Current;
-        public MainPage()
+        public HomePage()
         {
             this.InitializeComponent();
-            Current = this;
-
-            ScenarioFrame.Navigate(typeof(HomePage));
         }
 
-        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        private void FromData_GotFocus(object sender, RoutedEventArgs e)
         {
-            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+            if (FromData.Text == "From")
+                FromData.Text = "";
+        }
+
+        private void FromData_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (FromData.Text == "")
+                FromData.Text = "From";
+        }
+
+        private void ToData_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (ToData.Text == "To")
+                ToData.Text = "";
+        }
+
+        private void ToData_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (ToData.Text == "")
+                ToData.Text = "To";
         }
     }
 }
