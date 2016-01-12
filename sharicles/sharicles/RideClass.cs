@@ -13,13 +13,17 @@ namespace sharicles
     public abstract class Ride
     {
         /// <summary>
-        /// ID = 
+        /// ID for each Ride
         /// </summary>
         public ulong ID { get; set; }
         /// <summary>
-        /// Location of Ride
+        /// Start Location of Ride
         /// </summary>
-        public Geopoint Location { get; set; }
+        public Geopoint StartLocation { get; set; }
+        /// <summary>
+        /// End Location of Ride`
+        /// </summary>
+        public Geopoint EndLocation { get; set; }
         /// <summary>
         /// RideMode
         /// </summary>
@@ -34,9 +38,13 @@ namespace sharicles
         /// </summary>
         public RideMode ride { get; set; }
         /// <summary>
-        /// Availability
+        /// Vacancy in Ride
         /// </summary>
-        public int Number { get; set; }
+        public int Vacancy { get; set; }
+        /// <summary>
+        /// TimeSpan
+        /// </summary>
+        public TimeSpan Time { get; set; }
     }
 
     public class ShareRide : Ride

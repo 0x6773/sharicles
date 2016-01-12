@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
-    mc:Ignorable="d">
+    mc:Ignorable="d" SizeChanged="Page_SizeChanged">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel x:Name="MainStackPanel">
@@ -15,7 +15,7 @@
                 <TextBlock x:Name="MapFindTextBlock" Text="Finding your Location" Margin="5,2"/>
             </StackPanel>
             <!-- Don't share below key with anyone else -->
-            <Maps:MapControl x:Name="MapControl1" Height="450" Margin="6"
+            <Maps:MapControl x:Name="MapControl" Height="450" Margin="6"
                                  ZoomInteractionMode="GestureAndControl" 
                                  TiltInteractionMode="GestureAndControl" 
                                  MapServiceToken="Fzefg6JLEvusAiELaimR~4sglr9j0rlLuWUPjD6rEog~ArX8XLpTFNLZAXbZyW-0cwcXFD1XPykDMySwAkIVZATc7Sh3Tu576mIHIr0l0-kq"/>

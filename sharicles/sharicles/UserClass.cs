@@ -20,7 +20,19 @@ namespace sharicles
         /// Email of User
         /// </summary>
         public string Email { get; set; }
-        
+        /// <summary>
+        /// Age of User
+        /// </summary>
+        public int Age { get; set; }
+        /// <summary>
+        /// Sex of User
+        /// </summary>
+        public char Sex { get; set; }
+        /// <summary>
+        /// Phone number of User
+        /// </summary>
+        public string Phone { get; set; }
+
         public string Name
         {
             get
@@ -37,9 +49,10 @@ namespace sharicles
             FirstName = "FirstName";
             LastName = "LastName";
             Email = "google@live.com";
+            Age = 20;
+            Sex = 'M';
+            Phone = "6969696969";
         }
-
-
     }
 
     public static class MyExtensions

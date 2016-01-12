@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,18 +23,38 @@ namespace sharicles
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public static MainPage Current;
+        public static MainPage Current { get; set; }
+       
         public MainPage()
         {
             this.InitializeComponent();
             Current = this;
 
             ScenarioFrame.Navigate(typeof(HomePage));
+
+            if(MainPage.Current.Width > 640)
+            {
+                Splitter.DisplayMode = SplitViewDisplayMode.CompactOverlay;
+            }
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
-            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+            Splitter.IsPaneOpen = !Splitter.IsPaneOpen;
+        }
+
+        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (MainPage.Current.ActualWidth > 640)
+            {
+                Splitter.DisplayMode = SplitViewDisplayMode.CompactOverlay;
+                MainPage.Current.HamburgerButton2.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                Splitter.DisplayMode = SplitViewDisplayMode.Overlay;
+                MainPage.Current.HamburgerButton2.Visibility = Visibility.Visible;
+            }
         }
     }
 }
